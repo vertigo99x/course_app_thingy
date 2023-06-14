@@ -1,0 +1,302 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>CourseManage
+		</title>
+	    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	    <!----css3---->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+	
+	
+	
+	<!--google material icon-->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+  <body>
+  
+    <div class="loading-bar">
+        <div class="loading"></div>
+    </div>
+
+
+
+<div class="wrapper">
+
+    {% if messages %}
+                    <div style="margin-top:-1em;text-align:center;">
+                    
+                            {% for message in messages %}
+                            <script>
+                                alert("{{ message }}");
+                            </script>
+                            {% endfor %}
+                    
+                    </div>
+                {% endif %}
+
+
+<div class="body-overlay"></div>
+
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="text-transform:capitalize !important;font-size:1.5rem">Course<span class="discolor">Manage</span></h3>
+            </div>
+            <ul class="list-unstyled components">
+			<li class="">
+                    <a href="{% url 'dashboard' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                </li>
+		
+		   
+                
+				
+			
+               <li class="active">
+                    <a href="{% url 'tasks' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';"><i class="material-icons">task</i><span>Tasks</span></a>
+                </li>
+               <li class="">
+                    <a href="{% url 'course-mat' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';"><i class="material-icons">auto_stories</i><span>Course Materials</span></a>
+                </li>
+			
+               <li class="">
+                    <a href="{% url 'assignments' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';"><i class="material-icons">library_books</i><span>Assignments</span></a>
+                </li>
+
+				<li class="">
+                    <a href="{% url 'profile' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';"><i class="material-icons">person</i><span>Profile</span></a>
+                </li>
+
+				 <li  class="" style="margin-top:30vh;">
+                    <a href="{% url 'logout' %}" onclick="document.querySelector('.loading-bar').style.display = 'grid';"><i class="material-icons">logout</i><span>Logout</span></a>
+                </li>
+               
+               
+            </ul>
+
+           
+        </nav>
+		
+		
+
+        <!-- Page Content  -->
+        <div id="content">
+		
+            <div class="top-navbar">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                            <span class="material-icons">arrow_back_ios</span>
+                        </button>
+                        
+                        <a class="navbar-brand" href="#">Hello, {{ userdata.firstname}} </a>
+                        
+                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="material-icons">more_vert</span>
+                        </button>
+
+                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">   
+                               
+                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">
+                                    <span class="material-icons">person</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'logout' %}">
+                                    <span class="material-icons">logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+            <div class="popping-modal">
+                <div class="pop-modal-content">
+                    <div class="close">
+                        <span class="material-icons" onclick="document.querySelector('.popping-modal').style.display = 'none' ">close</span>
+                    </div>
+
+                    <form action="{% url 'tasks' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="field">
+                            <input type="text" name="title" placeholder="Enter Title..." required>
+                        </div>
+                        <div class="field">
+                           <button type="Submit" onclick="document.querySelector('.loading-bar').style.display = 'grid';">Add Task</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div> 
+			
+            <!--MAIN-->
+
+<div class="main-content">
+			
+			    <div class="row">
+                        
+
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header">
+                                    <div class="icon icon-rose">
+                                       <span class="material-icons">task</span>
+
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category"><strong>Tasks</strong></p>
+                                    <h3 class="card-title">{{ tasks_no }}</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">pending</i> Total pending tasks
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12" style="margin-left:.5rem;overflow-x:scroll;max-width:100vw">
+                                <div class="card" style="min-height: 485px">
+                                    <div class="card-header card-header-text">
+                                        <div style="display:flex;justify-content:space-between;">
+                                            <h4 class="card-title">Tasks </h4>
+                                            <span onclick="document.querySelector('.popping-modal').style.display = 'grid' "><a href="#" style="color:#fefefe;background:var(--primary);padding:.5rem 1rem;border-radius:.5rem;">Add Task</a></span>
+                                        </div>
+                                        <p class="category">Recent Tasks</p>
+                                    </div>
+                                    <div class="card-content table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                <th>Task Title</th>
+                                                <th>Date</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                
+                                            </tr></thead>
+                                            <tbody>
+                                                {% for task in tasks %}
+    
+                                                <tr>
+                                                    <td>{{ task.task }}</td>
+                                                    <td>{{ task.created|timesince }} Ago</td>
+                                                    {% if task.is_complete %}
+                                                        <td class="success">Completed</td>
+                                                        <td class="success"></td>
+                                                        
+                                                    {% else %}
+                                                      
+                                                        <td class="danger"><a href="{% url 'tasks-update' task.id %}" style="color:var(--primary); !important;" onclick="document.querySelector('.loading-bar').style.display = 'grid';">Complete</a></td>
+                                                        <td class="danger"><a href="{% url 'tasks-delete' task.id %}" class="material-icons" style="color:#e32 !important;" onclick="document.querySelector('.loading-bar').style.display = 'grid';">delete</a></td>
+                                                    {% endif %}
+                                                    
+                                                    
+                                                </tr>
+    
+                                                {% endfor %}
+                                                                                          
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            
+                        </div>
+                        
+                        
+                        
+                       
+					
+				
+					
+						
+					
+					
+					</div>
+					
+				
+
+
+
+
+            <!--MAIN END -->
+            
+
+			
+        </div>
+    </div>
+
+
+
+
+
+
+	
+  
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  
+  
+  <script type="text/javascript">
+
+    document.querySelector('.popping-modal').style.display = 'none';
+
+  $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+				$('#content').toggleClass('active');
+            });
+			
+			 $('.more-button,.body-overlay').on('click', function () {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
+			
+        });
+
+
+     
+           
+       
+</script>
+  
+  
+
+
+
+  </body>
+  
+  </html>
+
+

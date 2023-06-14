@@ -1,0 +1,175 @@
+
+
+@font-face {
+    font-family: Averta;
+    src: url("./AvertaDemoPECuttedDemo-Regular.otf");
+}
+
+
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+:root{
+    --primary:rgb(7,119,93);
+    --success:rgb(6, 177, 137);
+    --danger:#ff7782;
+    --dark-shadow:#848bc82e;
+    --box-shadow:0 .5rem 1rem var(--dark-shadow);
+    --card-padding:1.6rem;
+    --card-border-radius:.6rem;
+    --text:#333;
+    --background:rgb(232, 247, 243);
+    --grey:#888;
+    --white:#fefefe;
+}
+
+html,body{
+    font-family: "averta",Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    color:var(--text);
+}
+
+
+.wrapper{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background:var(--background);
+    background-image: url('./pexels-lukas-hartmann-1276237.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.wrapper header{
+    display: flex;
+    position: fixed;
+    top:0;
+    width:100%;
+    background-color: rgb(0,0, 0, .25);
+    padding:.5rem 1rem;
+    box-shadow: var(--box-shadow);
+    
+}
+
+.discolor{
+    color:var(--primary);
+}
+
+.wrapper form {
+    background:rgb(0, 0, 0, .4);
+    margin:1rem;
+    
+    border-radius:var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    width:100%;
+    max-width:30rem;
+}
+
+
+form .field{
+    width:100%;
+    position: relative;
+    margin:2rem 0;
+    padding:0 var(--card-padding);
+}
+
+
+form .field input, form button{
+    width:100%;
+    padding:.5rem;
+    font-family:inherit;
+    
+
+}
+
+form h3{
+    font-size:1.5rem;
+    text-align:center;
+    background:rgb(254, 254, 254, .6);
+    box-shadow: var(--box-shadow);
+    padding:.5rem;
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+
+}
+
+form .field input{
+    border:none;
+    border-bottom:2px solid #888;
+    background:transparent;
+    position: relative;
+    font-size:1rem;
+    font-weight:600;
+    z-index:999 !important;
+    color:var(--white);
+    letter-spacing: 2px;
+    
+}
+
+
+
+
+form .field label {
+    position:absolute;
+    top:.5rem;
+    left:2rem;
+    color:var(--white);
+    font-size:1.2rem;
+    z-index:1;
+    transition:all .3s ease;
+    letter-spacing: 1px;
+
+}
+
+input:focus{
+    outline: none;
+    border-bottom:2px solid var(--success) !important;
+}
+
+form .field input:focus ~ label {
+    top:-1rem;
+    font-size:1rem;
+    color:var(--success);
+    font-weight:800;
+}
+
+form .field input:focus ~ label, 
+form .field input:valid ~ label {
+    top:-1rem;
+    font-size:1rem;
+    
+    font-weight:800;
+    
+}
+
+
+form button{
+    font-size:1.1rem;
+    color:var(--white);
+    
+    
+    border-radius:var(--card-border-radius);
+    background:var(--primary);
+    border:none;
+    transition:all .1s ease;
+    letter-spacing: 1px;
+   
+    
+}
+
+
+form button:hover{
+    background:transparent;
+    
+    
+    border:2px solid var(--success);
+}

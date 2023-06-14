@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+
+*{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Averta;
+  src: url(../AvertaDemoPECuttedDemo-Regular.otf);
+}
+
+
+:root{
+  --background: #f6f6f9;
+  --primary:#0d628a;
+  --faint-white:#363949;
+  --success-green:#41f1b6;
+  --dark-2:#fefefe;
+  --light:#363949;
+  --danger:#ff7782;
+  --dark-shadow:#848bc82e;
+  --box-shadow:0 .5rem 1rem var(--dark-shadow);
+  --card-padding:1.6rem;
+  --card-border-radius:.6rem;
+}
+
+.dark-mode-variables{
+  --background: #181a1e;
+  --primary:#0d628a;
+  --faint-white:#edeffd;
+  --success-green:#41f1b6;
+  --dark-2:#202528;
+  --light:#fefefe;
+  --danger:#ff7782;
+  --dark-shadow:#00000066;
+  --box-shadow:0 .5rem 1rem var(--dark-shadow);
+
+}
+
+
+
+body {
+  overflow-x:hidden;
+  margin:0;
+  padding:0;
+  font-family:'Averta',Arial, Helvetica, sans-serif;
+  background: var(--background);
+}
+
+.logo {
+  width: 13em;
+  height: 63px;
+}
+
+h1 {
+  font-weight: 300;
+  color:var(--faint-white);
+}
+h2,li,p,h4{
+  color:var(--faint-white);
+}
+
+h1 strong {
+  font-weight: 600;
+  color: var(--success-green);
+}
+
+.inputstyle {
+  padding: .6rem;
+  
+}
+
+.whoop {
+  background-color: var(--success-green);
+  width: 6em;
+  font-size: 16px ;
+  color:var(--dark-2);
+}
+
+.caloriescont {
+  background-color: var(--dark-2);
+  padding: 30px;
+  border-radius:1.6rem ;
+}
+
+.caloriescont ul {
+  padding: 0px;
+}
+
+.caloriescont ul li {
+  
+  list-style: none;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--faint-white);
+  width: 80%;
+}
+
+.caloriescont h3 {
+  color: #4b8673;
+  font-size: 2em;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.caloriescont h5 {
+  color: #4b8673;
+}
+
+.servingsize {
+  background-color: var(--dark-shadow);
+  padding: 10px;
+  color: #a3bdcc;
+  border-radius:.4rem;
+  border:none;
+}
+li.servingsize{
+  border:none ;
+}
+
+
+
+/*============================ LOGIN AND REGISTER ====================*/
+
+
+.container {
+  display:grid;
+  place-items:center;
+  background: var(--background);
+  height:100vh;
+  padding:2rem;
+}
+
+.container a.modeChanger {
+  position: absolute;
+  top:0;
+  right:0;
+  padding:.5rem;
+  color:var(--primary);
+  text-decoration: none;
+}
+
+.container form {
+  width:100%;
+  max-width:25rem;
+  max-height: 39rem;
+  overflow-y: scroll;
+  background: var(--dark-2);
+  box-shadow: var(--box-shadow);
+  padding:var(--card-padding);
+  border-radius: var(--card-border-radius);
+}
+
+
+.container form .field {
+  position: relative;
+  padding:1rem 0;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.container form .field p{
+  font-size: 1rem;
+  margin-top:2rem;
+  text-align: left;
+}
+.container form .field p a{
+  color:var(--primary);
+}
+
+.container form .field span {
+  position: absolute;
+  right:0;
+  top:1.5rem;
+  color:var(--light)
+}
+
+.container form .field input, .container form .field select{
+  width:100%;
+  padding:.5rem;
+  border:none;
+  background: transparent;
+  border:1px solid var(--light);
+  font-size:1.1rem;
+  color:var(--light);
+  border-radius: .5rem;
+  background: transparent;
+  font-family: inherit;
+}
+
+option{
+  color:#333;
+}
+
+.container form .field input[type='text']:valid,
+.container form .field input[type='email']:valid{
+  border-color: var(--success-green);
+}
+
+.container form .field input[type='text']:not(:valid):not(:placeholder-shown),
+.container form .field input[type='email']:not(:valid):not(:placeholder-shown){
+  border-color: var(--danger);
+}
+
+.container form .field input[type='text']:not(:valid):not(:placeholder-shown){
+  border-color: var(--danger);
+}
+
+.container form .field button{
+  width:100%;
+  padding: .5rem;
+  font-size:1.1rem;
+  font-weight: 500;
+  border-radius: var(--card-border-radius);
+  border:none;
+  box-shadow: var(--box-shadow);
+  color:#fefefe;
+  background: var(--primary);
+  transition: all .1s ease;
+}
+
+.container form .field button:hover{
+  border:2px solid var(--primary);
+  color:var(--primary);
+  background: transparent;
+  box-shadow: none;
+}
+
+textarea{
+  resize:none;
+  border-radius: var(--card-border-radius);
+  padding:.5rem;
+  border:1px solid var(--light);
+  color:var(--light);
+  background: transparent;
+  height:4rem;
+}

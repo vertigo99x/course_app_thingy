@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{% static './login_and_register/style.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        
+        
+            <form action="{% url 'register-user' %}" method="POST">
+                
+                {% csrf_token %}
+
+                {% if messages %}
+                    <div style="margin-top:-1em;text-align:center;">
+                    
+                            {% for message in messages %}
+                            <p style="font-size:16px;color:#e32;font-weight:600">{{ message }}</p>
+                            {% endfor %}
+                    
+                    </div>
+                {% endif %}
+                <div class="field">
+                    <input type="text" name='matric_no' placeholder="Matric No." required minlength="7" maxlength="8">
+                </div>
+                
+                <div class="field">
+                    <input type="text" name='lastname' placeholder="Firstname" required>
+                </div>
+                <div class="field">
+                    <input type="text" name='firstname' placeholder="Firstname" required>
+                </div>
+
+                <div class="field">
+                    <input type="text" name='othername' placeholder="othername" required>
+                </div>
+                <div class="field">
+                    <input type="email" name='email' placeholder="Email" required >
+                </div>
+                <div class="field">
+                    <input type="text" name='dept' placeholder="Department" required>
+                </div>
+
+                <div class="field">
+                    <select name="college" required>
+                        <option value="" selected disabled>Select College</option>
+                        <option value="COPAS">COPAS</option>
+                        <option value="CASMAS">CASMAS</option>
+                        <option value="COLENSMAS">COLENSMAS</option>
+
+                    </select>
+
+                </div>
+                <div class="field">
+                    <select name="level" required>
+                        <option value="" selected disabled>Select Level</option>
+                        <option value="100">100 Level</option>
+                        <option value="200">200 Level</option>
+                        <option value="300">300 Level</option>
+                        <option value="400">400 Level</option>
+                    </select>
+
+                </div>
+
+                <div class="field">
+                    <input type="password" name='password' placeholder="Password" id="loginPassword" required minlength="4">
+                   
+                </div>
+
+                <div class="field">
+                    <button type="submit">Register</button>
+                    <p>Already a User? <a href="{% url 'login' %}">Login</a></p>
+                </div>
+                <div class="field">
+                    
+                </div>
+            </form>
+
+        
+            
+
+
+    </div>
+
+    <script src="{% static './js/script.js' %}"></script>
+</body>
+</html>
